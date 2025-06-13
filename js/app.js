@@ -1,1 +1,0 @@
-console.log("TransCS Dashboard iniciado com sucesso.");
