@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TransCS Dashboard</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TransCS Soluções - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
   <header class="header">
@@ -13,27 +12,49 @@
     <h1>TransCS Soluções</h1>
     <p>Painel de Gestão Financeira</p>
   </header>
+
   <main class="dashboard">
-    <div class="card destaque">
-      <h2>Receita Mensal</h2>
-      <p id="receita">R$ 20.000,00</p>
-    </div>
-    <div class="card">
-      <h2>Despesas Mensais</h2>
-      <p id="despesas">R$ 16.789,00</p>
-    </div>
-    <div class="card">
-      <h2>Lucro Líquido</h2>
-      <p id="lucro">R$ 3.211,00</p>
-    </div>
-    <div class="card">
-      <h2>KM Rodado (mês)</h2>
-      <p id="km">1.400 km</p>
-    </div>
+    <section class="form-section">
+      <h2>Lançar Viagem</h2>
+      <form id="viagemForm">
+        <input type="date" id="data" required />
+        <input type="text" id="cliente" placeholder="Cliente" required />
+        <input type="number" id="receita" placeholder="Receita (R$)" required />
+        <input type="number" id="despesas" placeholder="Despesas (R$)" required />
+        <input type="number" id="km" placeholder="KM Rodado" required />
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="cards">
+      <div class="card" id="receitaCard">Receita Mensal<br/><strong>R$ 0,00</strong></div>
+      <div class="card" id="despesaCard">Despesas Mensais<br/><strong>R$ 0,00</strong></div>
+      <div class="card" id="lucroCard">Lucro Líquido<br/><strong>R$ 0,00</strong></div>
+      <div class="card" id="kmCard">KM Rodado<br/><strong>0 km</strong></div>
+    </section>
+
+    <section class="table-section">
+      <h2>Histórico de Viagens</h2>
+      <table id="historicoTable">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Cliente</th>
+            <th>Receita</th>
+            <th>Despesas</th>
+            <th>Lucro</th>
+            <th>KM</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
   </main>
+
   <footer class="footer">
-    <p>TransCS © 2025 - Sistema em desenvolvimento</p>
+    TransCS © 2025 - Sistema em desenvolvimento
   </footer>
+
   <script src="js/app.js"></script>
 </body>
 </html>
