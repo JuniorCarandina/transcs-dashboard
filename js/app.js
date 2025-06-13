@@ -1,1 +1,1 @@
-// JavaScript principal do sistema
+console.log("TransCS Dashboard iniciado com sucesso.");
