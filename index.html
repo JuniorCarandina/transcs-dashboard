@@ -1,16 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TransCS Soluções - Painel</title>
+  <title>TransCS Dashboard</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="header">
     <img src="assets/logo.png" class="logo" alt="Logo TransCS">
     <h1>TransCS Soluções</h1>
-    <p>Sistema de Gestão Financeira para Transporte</p>
+    <p>Painel de Gestão Financeira</p>
   </header>
+  <main class="dashboard">
+    <div class="card destaque">
+      <h2>Receita Mensal</h2>
+      <p id="receita">R$ 20.000,00</p>
+    </div>
+    <div class="card">
+      <h2>Despesas Mensais</h2>
+      <p id="despesas">R$ 16.789,00</p>
+    </div>
+    <div class="card">
+      <h2>Lucro Líquido</h2>
+      <p id="lucro">R$ 3.211,00</p>
+    </div>
+    <div class="card">
+      <h2>KM Rodado (mês)</h2>
+      <p id="km">1.400 km</p>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>TransCS © 2025 - Sistema em desenvolvimento</p>
+  </footer>
+  <script src="js/app.js"></script>
 </body>
 </html>
