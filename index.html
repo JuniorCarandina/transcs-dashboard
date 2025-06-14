@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TransCS Soluções - Dashboard</title>
-  <link rel="stylesheet" href="css/style.css"/>
+  <title>TransCS Soluções - Painel</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="header">
@@ -13,29 +14,49 @@
     <p>Painel de Gestão Financeira</p>
   </header>
 
-  <main class="dashboard">
-    <section class="form-section">
-      <h2>Lançar Viagem</h2>
-      <form id="viagemForm">
-        <input type="date" id="data" required />
-        <input type="text" id="cliente" placeholder="Cliente" required />
-        <input type="number" id="receita" placeholder="Receita (R$)" required />
-        <input type="number" id="despesas" placeholder="Despesas (R$)" required />
-        <input type="number" id="km" placeholder="KM Rodado" required />
-        <button type="submit">Adicionar</button>
-      </form>
-    </section>
+  <div class="container">
+    <h2>Lançar Viagem</h2>
+    <form id="viagemForm">
+      <div class="form-group">
+        <input type="date" name="data" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="cliente" placeholder="Cliente" required>
+      </div>
+      <div class="form-group">
+        <input type="number" name="receita" step="0.01" placeholder="Receita (R$)" required>
+      </div>
+      <div class="form-group">
+        <input type="number" name="despesas" step="0.01" placeholder="Despesas (R$)" required>
+      </div>
+      <div class="form-group">
+        <input type="number" name="km" placeholder="KM Rodado" required>
+      </div>
+      <button type="submit">Adicionar</button>
+    </form>
 
-    <section class="cards">
-      <div class="card" id="receitaCard">Receita Mensal<br/><strong>R$ 0,00</strong></div>
-      <div class="card" id="despesaCard">Despesas Mensais<br/><strong>R$ 0,00</strong></div>
-      <div class="card" id="lucroCard">Lucro Líquido<br/><strong>R$ 0,00</strong></div>
-      <div class="card" id="kmCard">KM Rodado<br/><strong>0 km</strong></div>
-    </section>
+    <div class="dashboard">
+      <div class="card">
+        <h3>Receita Mensal</h3>
+        <p id="receita">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>Despesas Mensais</h3>
+        <p id="despesa">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>Lucro Líquido</h3>
+        <p id="lucro">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>KM Rodado</h3>
+        <p id="kmRodado">0 km</p>
+      </div>
+    </div>
 
-    <section class="table-section">
+    <div class="table-container">
       <h2>Histórico de Viagens</h2>
-      <table id="historicoTable">
+      <table>
         <thead>
           <tr>
             <th>Data</th>
@@ -46,14 +67,15 @@
             <th>KM</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="tabelaViagens">
+        </tbody>
       </table>
-    </section>
-  </main>
+    </div>
 
-  <footer class="footer">
-    TransCS © 2025 - Sistema em desenvolvimento
-  </footer>
+    <footer>
+      TransCS © 2025 - Sistema de Gestão em Desenvolvimento
+    </footer>
+  </div>
 
   <script src="js/app.js"></script>
 </body>

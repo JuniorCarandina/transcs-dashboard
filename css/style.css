@@ -1,45 +1,63 @@
+
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
   margin: 0;
-  padding: 0;
+  background: #f4f4f4;
 }
 .header {
-  background: #1e3799;
+  background-color: #1635a2;
   color: white;
   padding: 20px;
   text-align: center;
 }
 .logo {
   width: 60px;
+  margin-bottom: 10px;
+}
+.container {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+button {
+  padding: 10px 20px;
+  background: #1635a2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 }
 .dashboard {
-  padding: 20px;
-}
-.cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  margin-top: 30px;
 }
 .card {
+  flex: 1 1 calc(50% - 20px);
   background: white;
-  border-radius: 10px;
   padding: 20px;
-  min-width: 200px;
+  border-radius: 12px;
   text-align: center;
-  font-weight: bold;
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-.form-section, .table-section {
-  margin: 30px auto;
-  max-width: 600px;
+.card h3 {
+  margin: 0;
 }
-form input, form button {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%;
+.table-container {
+  margin-top: 40px;
 }
 table {
   width: 100%;
@@ -47,11 +65,15 @@ table {
 }
 th, td {
   padding: 10px;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
-.footer {
+th {
+  background-color: #1635a2;
+  color: white;
+}
+footer {
+  margin-top: 50px;
   text-align: center;
-  padding: 20px;
-  background: #eee;
-  font-size: 0.9em;
+  color: #555;
+  font-size: 14px;
 }

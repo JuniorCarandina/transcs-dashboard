@@ -1,35 +1,62 @@
-document.getElementById("viagemForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const data = document.getElementById("data").value;
-  const cliente = document.getElementById("cliente").value;
-  const receita = parseFloat(document.getElementById("receita").value);
-  const despesas = parseFloat(document.getElementById("despesas").value);
-  const km = parseFloat(document.getElementById("km").value);
 
-  const lucro = receita - despesas;
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('viagemForm');
+  const tabela = document.getElementById('tabelaViagens');
+  const receitas = document.getElementById('receita');
+  const despesas = document.getElementById('despesa');
+  const lucro = document.getElementById('lucro');
+  const kmRodado = document.getElementById('kmRodado');
 
-  const table = document.getElementById("historicoTable").querySelector("tbody");
-  const row = table.insertRow();
-  row.innerHTML = `<td>${data}</td><td>${cliente}</td><td>R$ ${receita.toFixed(2)}</td><td>R$ ${despesas.toFixed(2)}</td><td>R$ ${lucro.toFixed(2)}</td><td>${km} km</td>`;
+  let dados = JSON.parse(localStorage.getItem('viagens')) || [];
 
-  updateDashboard(receita, despesas, lucro, km);
+  function atualizarDashboard() {
+    let totalReceita = 0;
+    let totalDespesa = 0;
+    let totalKM = 0;
 
-  this.reset();
+    dados.forEach(item => {
+      totalReceita += parseFloat(item.receita);
+      totalDespesa += parseFloat(item.despesas);
+      totalKM += parseFloat(item.km);
+    });
+
+    receitas.innerText = totalReceita.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    despesas.innerText = totalDespesa.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    lucro.innerText = (totalReceita - totalDespesa).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    kmRodado.innerText = totalKM.toLocaleString('pt-BR') + " km";
+  }
+
+  function preencherTabela() {
+    tabela.innerHTML = '';
+    dados.forEach(item => {
+      const linha = document.createElement('tr');
+      linha.innerHTML = \`
+        <td>\${item.data}</td>
+        <td>\${item.cliente}</td>
+        <td>R$\${parseFloat(item.receita).toFixed(2)}</td>
+        <td>R$\${parseFloat(item.despesas).toFixed(2)}</td>
+        <td>R$\${(item.receita - item.despesas).toFixed(2)}</td>
+        <td>\${item.km} km</td>
+      \`;
+      tabela.appendChild(linha);
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = form.data.value;
+    const cliente = form.cliente.value;
+    const receita = parseFloat(form.receita.value) || 0;
+    const despesas = parseFloat(form.despesas.value) || 0;
+    const km = parseFloat(form.km.value) || 0;
+
+    dados.push({ data, cliente, receita, despesas, km });
+    localStorage.setItem('viagens', JSON.stringify(dados));
+    preencherTabela();
+    atualizarDashboard();
+    form.reset();
+  });
+
+  preencherTabela();
+  atualizarDashboard();
 });
-
-let totalReceita = 0;
-let totalDespesas = 0;
-let totalLucro = 0;
-let totalKm = 0;
-
-function updateDashboard(receita, despesas, lucro, km) {
-  totalReceita += receita;
-  totalDespesas += despesas;
-  totalLucro += lucro;
-  totalKm += km;
-
-  document.getElementById("receitaCard").innerHTML = `Receita Mensal<br/><strong>R$ ${totalReceita.toFixed(2)}</strong>`;
-  document.getElementById("despesaCard").innerHTML = `Despesas Mensais<br/><strong>R$ ${totalDespesas.toFixed(2)}</strong>`;
-  document.getElementById("lucroCard").innerHTML = `Lucro Líquido<br/><strong>R$ ${totalLucro.toFixed(2)}</strong>`;
-  document.getElementById("kmCard").innerHTML = `KM Rodado<br/><strong>${totalKm} km</strong>`;
-}
